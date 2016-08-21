@@ -10,7 +10,9 @@ class MayamlMuttConfigsGenerator < Minitest::Test
     account_init = ::MayamlMutt::AccountInit.new
     accounts_alternates = ::MayamlMutt::AccountsAlternates.new
     account_creds = ::MayamlMutt::AccountCreds.new
-    @generator = ::MayamlMutt::ConfigsGenerator.new(account_init, accounts_alternates, account_creds)
+    @generator = ::MayamlMutt::ConfigsGenerator.new(
+      account_init, accounts_alternates, account_creds
+    )
   end
 
   def account(name, type = :imap)
@@ -42,7 +44,7 @@ class MayamlMuttConfigsGenerator < Minitest::Test
   end
 
   def test_that_init_generator_returns_right_alternates_key
-    accounts = [account("acc1"), account('acc2')]
+    accounts = [account("acc1"), account("acc2")]
     results = @generator.generates_init(accounts)
     assert_match(/^alternates acc1 acc2/, results[:alternates])
   end

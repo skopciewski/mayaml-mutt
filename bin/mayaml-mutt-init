@@ -38,9 +38,9 @@ end
 
 def store_configs(configs, destination_file)
   alternates = configs.delete(:alternates)
-  File.open(destination_file, "w") do |f| 
+  File.open(destination_file, "w") do |f|
     f.write("# vim: filetype=muttrc\n\n")
-    configs.each do |name, config|
+    configs.each do |_name, config|
       f.write(config)
     end
     f.write(alternates)

@@ -8,7 +8,7 @@ class MayamlMuttAccountsAlternatesTest < Minitest::Test
   end
 
   def test_that_template_has_right_alternates
-    accounts = ['acc1', 'acc2']
+    accounts = %w(acc1 acc2)
     config = @generator.render(accounts)
     assert_match(/^alternates #{accounts.join(' ')}/, config)
   end
@@ -16,12 +16,12 @@ class MayamlMuttAccountsAlternatesTest < Minitest::Test
   def test_that_template_is_empty_when_no_accounts_given
     accounts = []
     config = @generator.render(accounts)
-    assert_equal '', config
+    assert_equal "", config
   end
 
   def test_that_template_is_empty_when_nil_given
     accounts = nil
     config = @generator.render(accounts)
-    assert_equal '', config
+    assert_equal "", config
   end
 end

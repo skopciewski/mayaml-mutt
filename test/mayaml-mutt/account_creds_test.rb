@@ -19,6 +19,9 @@ class MayamlMuttAccountCredsTest < Minitest::Test
   end
 
   def test_that_template_has_smtp_url_line
-    assert_match(/^set smtp_url="smtp:\/\/#{@account.user}@#{@account.server}:#{@account.port}\/" smtp_pass="#{@account.pass}"/, @config)
+    assert_match(
+      %r{^set smtp_url="smtp://#{@account.user}@#{@account.server}:#{@account.port}/" smtp_pass="#{@account.pass}"},
+      @config
+    )
   end
 end

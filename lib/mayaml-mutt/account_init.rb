@@ -30,14 +30,14 @@ module MayamlMutt
         @template,
         name: mail_account.name,
         clean_name: clean_name(mail_account.name),
-        accounts_dir: config.fetch(:accounts_dir, 'accounts')
+        accounts_dir: config.fetch(:accounts_dir, "accounts")
       )
     end
 
     private
 
     def clean_name(string)
-      string.gsub(/\W/,'_')
+      string.gsub(/\W/, "_")
     end
   end
 end

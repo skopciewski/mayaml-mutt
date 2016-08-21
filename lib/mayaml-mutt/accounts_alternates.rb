@@ -29,7 +29,7 @@ module MayamlMutt
       return "" if account_names.nil? || account_names.empty?
       ::Mustache.render(
         @template,
-        accounts: account_names.join(' '),
+        accounts: account_names.join(" ")
       )
     end
   end
