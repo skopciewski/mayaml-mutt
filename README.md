@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/mayaml-mutt.svg)](http://badge.fury.io/rb/mayaml-mutt)
 
 This is the mutt configs generator which gets the accounts settigns from yaml file. See [Mayaml][mayaml_url]
+The mutt configuration is designed to handle many accounts and one inbox. (example implementation: [DockerMutt][docker_mutt_url])
 
 ## Installation
 
@@ -20,6 +21,10 @@ Or install it yourself as:
 
 ## Usage
 
+If ruby bin dir is in your PATH, just call `mayaml-mutt-init <path_to_the_yaml_file> [<destination_config_file>]` 
+to list generated configs or store them in `destination_config_file`.
+Or `mayaml-mutt-creds <path_to_the_yaml_file> [<dir_for_storing_configs>]` 
+to list generated configs or store them in `dir_for_storing_configs`.
 
 ## Versioning
 
@@ -35,3 +40,4 @@ See [semver.org][semver]
 
 [semver]: http://semver.org/
 [mayaml_url]: https://github.com/skopciewski/mayaml
+[docker_mutt_url]: https://github.com/skopciewski/docker-mutt
