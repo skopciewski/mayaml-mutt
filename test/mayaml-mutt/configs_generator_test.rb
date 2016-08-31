@@ -18,8 +18,10 @@ class MayamlMuttConfigsGenerator < Minitest::Test
   def account(name, type = :imap)
     account = ::Mayaml::MailAccount.new
     account.name = name
+    account.realname = "Joe"
     account.type = type
     account.server = "test@test.com"
+    account.port = 999
     account.user = "user"
     account.pass = "pass"
     account
