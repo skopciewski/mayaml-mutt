@@ -17,11 +17,11 @@ class MayamlMuttAccountInitTest < Minitest::Test
   end
 
   def test_that_template_has_send_hook_line
-    assert_match(%r{^send-hook .*source ~/\.mutt/accounts/#{@account.name}}, @config)
+    assert_match(%r{^send-hook .*source .*/#{@account.name}}, @config)
   end
 
   def test_that_template_has_send2_hook_line
-    assert_match(%r{^send2-hook .*source ~/\.mutt/accounts/#{@account.name}}, @config)
+    assert_match(%r{^send2-hook .*source .*/#{@account.name}}, @config)
   end
 
   def test_that_template_has_alias_line
