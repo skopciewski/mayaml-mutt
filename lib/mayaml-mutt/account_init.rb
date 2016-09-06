@@ -30,7 +30,7 @@ module MayamlMutt
         @template,
         name: mail_account.name,
         clean_name: clean_name(mail_account.name),
-        accounts_dir: config.fetch(:accounts_dir, "accounts")
+        accounts_dir: config.fetch(:accounts_dir, "~/.mutt/accounts")
       )
     end
 
