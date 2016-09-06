@@ -40,6 +40,7 @@ module MayamlMutt
       accounts.each_with_object({}) do |mail_account, result|
         key = mail_account.name.to_sym
         result[key] = @creds_templater.render(mail_account)
+        result[:default] = mail_account.name if mail_account.default || !result.key?(:default)
         result
       end
     end

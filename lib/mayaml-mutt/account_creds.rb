@@ -29,6 +29,7 @@ module MayamlMutt
       ::Mustache.render(
         @template,
         name: mail_account.name,
+        realname: mail_account.realname,
         user: mail_account.user,
         pass: mail_account.pass,
         server: mail_account.server,
