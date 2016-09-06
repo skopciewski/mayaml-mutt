@@ -6,7 +6,9 @@ class MayamlMuttAccountInitTest < Minitest::Test
   def setup
     @account = ::Mayaml::MailAccount.new
     @account.name = "test-name@test.com"
+    @account.realname = "Joe Doe"
     @account.server = "test@test.com"
+    @account.port = 999
     @account.user = "user"
     @account.user = "pass"
     @account.mailboxes = %w(a b)

@@ -18,8 +18,10 @@ class MayamlMuttConfigsGenerator < Minitest::Test
   def account(name, type = :imap)
     account = ::Mayaml::MailAccount.new
     account.name = name
+    account.realname = "Joe"
     account.type = type
     account.server = "test@test.com"
+    account.port = 999
     account.user = "user"
     account.pass = "pass"
     account
@@ -67,9 +69,29 @@ class MayamlMuttConfigsGenerator < Minitest::Test
     assert_equal true, results.key?(accounts.first.name.to_sym)
   end
 
-  def test_that_creds_gernerator_generates_two_configs_for_two_accounts
+  def test_that_creds_generator_returns_hash_with_default_key
+    accounts = [account("acc1")]
+    results = @generator.generates_creds(accounts)
+    assert_equal true, results.key?(:default)
+  end
+
+  def test_that_creds_gernerator_generates_three_configs_for_two_accounts
     accounts = [account("acc1"), account("acc2")]
     results = @generator.generates_creds(accounts)
-    assert_equal 2, results.count
+    assert_equal 3, results.count
+  end
+
+  def test_that_creds_gernerator_returns_hash_with_first_default_account_if_not_specified
+    accounts = [account("acc1"), account("acc2")]
+    results = @generator.generates_creds(accounts)
+    assert_equal "acc1", results[:default]
+  end
+
+  def test_that_creds_gernerator_returns_hash_with_selected_default_account
+    default_account = account("acc2")
+    default_account.default = true
+    accounts = [account("acc1"), default_account, account("acc3")]
+    results = @generator.generates_creds(accounts)
+    assert_equal default_account.name, results[:default]
   end
 end

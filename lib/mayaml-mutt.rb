@@ -27,13 +27,15 @@ require "mayaml-mutt/accounts_alternates"
 module MayamlMutt
   def self.accounts_init_from_file(yaml_accounts)
     accounts = ::Mayaml.accounts_from_file(yaml_accounts)
-    generator = ConfigsGenerator.new(AccountInit.new, AccountsAlternates.new, AccountCreds.new)
     generator.generates_init(accounts)
   end
 
   def self.accounts_creds_from_file(yaml_accounts)
     accounts = ::Mayaml.accounts_from_file(yaml_accounts)
-    generator = ConfigsGenerator.new(AccountInit.new, AccountsAlternates.new, AccountCreds.new)
     generator.generates_creds(accounts)
+  end
+
+  def self.generator
+    ConfigsGenerator.new(AccountInit.new, AccountsAlternates.new, AccountCreds.new)
   end
 end

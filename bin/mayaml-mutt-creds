@@ -27,6 +27,8 @@ def puts_ussage_message
 end
 
 def present_configs(configs)
+  default_acc = configs.delete(:default)
+  puts "### Default account: #{default_acc}"
   configs.each do |name, config|
     puts "### Name: #{name} " + "=" * 50
     puts config
@@ -36,10 +38,14 @@ end
 
 def store_configs(configs, destination_dir)
   FileUtils.mkdir_p destination_dir
+  default_acc = configs.delete(:default)
   configs.each do |name, config|
     file_path = File.join destination_dir, name.to_s
     File.open(file_path, "w") { |f| f.write(config) }
   end
+  FileUtils.ln_s(
+    File.join(destination_dir, default_acc), File.join(destination_dir, "current_acc")
+  )
 end
 
 def check_yaml_path(yaml_path)
