@@ -1,3 +1,8 @@
+=== 3.0.0 (2016.09.07)
+
+* skip v2 release to be compatible with mayaml version
+* update to use mayaml v3
+
 === 1.1.2 (2016.09.06)
 
 * fix typo in the account_init config file
