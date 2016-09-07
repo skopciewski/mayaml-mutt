@@ -33,7 +33,9 @@ module MayamlMutt
         user: mail_account.user,
         pass: mail_account.pass,
         server: mail_account.server,
-        port: mail_account.port
+        smtp_protocol: mail_account.smtp_protocol,
+        smtp_port: mail_account.smtp_port,
+        smtp_authenticator: mail_account.smtp_authenticator
       )
     end
   end

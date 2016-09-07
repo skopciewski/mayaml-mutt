@@ -24,6 +24,9 @@ class MayamlMuttConfigsGenerator < Minitest::Test
     account.port = 999
     account.user = "user"
     account.pass = "pass"
+    account.smtp_protocol = "smpts"
+    account.smtp_port = 444
+    account.smtp_authenticator = "local"
     account
   end
 

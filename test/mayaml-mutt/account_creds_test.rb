@@ -12,6 +12,9 @@ class MayamlMuttAccountCredsTest < Minitest::Test
     @account.user = "user"
     @account.pass = "pass"
     @account.mailboxes = %w(a b)
+    @account.smtp_protocol = "smpts"
+    @account.smtp_port = 444
+    @account.smtp_authenticator = "login"
     @generator = ::MayamlMutt::AccountCreds.new
     @config = @generator.render(@account)
   end
@@ -26,8 +29,12 @@ class MayamlMuttAccountCredsTest < Minitest::Test
 
   def test_that_template_has_smtp_url_line
     assert_match(
-      %r{^set smtp_url="smtp://#{@account.user}@#{@account.server}:#{@account.port}/" smtp_pass="#{@account.pass}"},
+      %r{^set smtp_url="#{@account.smtp_protocol}://#{@account.user}@#{@account.server}:#{@account.smtp_port}/" smtp_pass="#{@account.pass}"},
       @config
     )
+  end
+
+  def test_that_template_has_authenticator_line
+    assert_match(/^set smtp_authenticators="#{@account.smtp_authenticator}"/, @config)
   end
 end
