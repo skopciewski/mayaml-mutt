@@ -12,6 +12,9 @@ class MayamlMuttAccountInitTest < Minitest::Test
     @account.user = "user"
     @account.user = "pass"
     @account.mailboxes = %w(a b)
+    @account.smtp_protocol = "smpts"
+    @account.smtp_port = 444
+    @account.smtp_authenticator = "login"
     @generator = ::MayamlMutt::AccountInit.new
     @config = @generator.render(@account)
   end

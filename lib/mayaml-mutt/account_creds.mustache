@@ -2,6 +2,7 @@
 
 set realname="{{ realname }}"
 set from="{{ name }}"
-set smtp_url="smtp://{{ user }}@{{ server }}:{{ port}}/" smtp_pass="{{ pass }}"
+set smtp_url="{{ smtp_protocol }}://{{ user }}@{{ server }}:{{ smtp_port }}/" smtp_pass="{{ pass }}"
+set smtp_authenticators="{{ smtp_authenticator }}"
 set ssl_force_tls = yes
 set ssl_starttls = yes
