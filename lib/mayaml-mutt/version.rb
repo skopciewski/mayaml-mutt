@@ -18,5 +18,5 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 module MayamlMutt
-  VERSION = "1.1.2".freeze
+  VERSION = "3.0.0".freeze
 end
