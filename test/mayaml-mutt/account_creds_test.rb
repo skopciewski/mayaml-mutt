@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "test_helper"
 require "mayaml-mutt/account_creds"
 require "mayaml/mail_account"
@@ -7,7 +8,7 @@ class MayamlMuttAccountCredsTest < Minitest::Test
     @account = ::Mayaml::MailAccount.new
     @account.name = "test-name@test.com"
     @account.realname = "Joe Doe"
-    @account.server = "test@test.com"
+    @account.server = "test.test.com"
     @account.port = 999
     @account.user = "user"
     @account.pass = "pass"
@@ -15,6 +16,7 @@ class MayamlMuttAccountCredsTest < Minitest::Test
     @account.smtp_protocol = "smpts"
     @account.smtp_port = 444
     @account.smtp_authenticator = "login"
+    @account.smtp_server = "test.test.org"
     @generator = ::MayamlMutt::AccountCreds.new
     @config = @generator.render(@account)
   end
@@ -29,7 +31,7 @@ class MayamlMuttAccountCredsTest < Minitest::Test
 
   def test_that_template_has_smtp_url_line
     assert_match(
-      %r{^set smtp_url="#{@account.smtp_protocol}://#{@account.user}@#{@account.server}:#{@account.smtp_port}/" smtp_pass="#{@account.pass}"},
+      %r{^set smtp_url="#{@account.smtp_protocol}://#{@account.user}@#{@account.smtp_server}:#{@account.smtp_port}/" smtp_pass="#{@account.pass}"},
       @config
     )
   end

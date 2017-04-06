@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "test_helper"
 require "mayaml-mutt/accounts_alternates"
 require "mayaml/mail_account"

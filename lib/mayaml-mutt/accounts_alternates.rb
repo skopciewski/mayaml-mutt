@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-# Copyright (C) 2016 Szymon Kopciewski
+# Copyright (C) 2016, 2017 Szymon Kopciewski
 #
 # This file is part of MayamlMutt.
 #
@@ -21,16 +21,18 @@ require "mustache"
 
 module MayamlMutt
   class AccountsAlternates
-    def initialize
-      @template = IO.read(File.join(File.dirname(__FILE__), "accounts_alternates.mustache"))
-    end
-
     def render(account_names)
       return "" if account_names.nil? || account_names.empty?
       ::Mustache.render(
-        @template,
+        IO.read(template_file_path),
         accounts: account_names.join(" ")
       )
+    end
+
+    private
+
+    def template_file_path
+      File.join(Gem.datadir("mayaml-mutt"), "accounts_alternates.mustache")
     end
   end
 end

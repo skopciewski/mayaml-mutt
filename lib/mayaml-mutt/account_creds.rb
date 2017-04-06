@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-# Copyright (C) 2016 Szymon Kopciewski
+# Copyright (C) 2016, 2017 Szymon Kopciewski
 #
 # This file is part of MayamlMutt.
 #
@@ -21,13 +21,9 @@ require "mustache"
 
 module MayamlMutt
   class AccountCreds
-    def initialize
-      @template = IO.read(File.join(File.dirname(__FILE__), "account_creds.mustache"))
-    end
-
     def render(mail_account)
       ::Mustache.render(
-        @template,
+        IO.read(template_file_path),
         name: mail_account.name,
         realname: mail_account.realname,
         user: mail_account.user,
@@ -35,8 +31,15 @@ module MayamlMutt
         server: mail_account.server,
         smtp_protocol: mail_account.smtp_protocol,
         smtp_port: mail_account.smtp_port,
-        smtp_authenticator: mail_account.smtp_authenticator
+        smtp_authenticator: mail_account.smtp_authenticator,
+        smtp_server: mail_account.smtp_server
       )
+    end
+
+    private
+
+    def template_file_path
+      File.join(Gem.datadir("mayaml-mutt"), "account_creds.mustache")
     end
   end
 end
