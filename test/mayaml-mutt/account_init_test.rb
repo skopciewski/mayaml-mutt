@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "test_helper"
 require "mayaml-mutt/account_init"
 require "mayaml/mail_account"
@@ -7,7 +8,7 @@ class MayamlMuttAccountInitTest < Minitest::Test
     @account = ::Mayaml::MailAccount.new
     @account.name = "test-name@test.com"
     @account.realname = "Joe Doe"
-    @account.server = "test@test.com"
+    @account.server = "test.test.com"
     @account.port = 999
     @account.user = "user"
     @account.user = "pass"
@@ -15,6 +16,7 @@ class MayamlMuttAccountInitTest < Minitest::Test
     @account.smtp_protocol = "smpts"
     @account.smtp_port = 444
     @account.smtp_authenticator = "login"
+    @account.smtp_server = "test.test.org"
     @generator = ::MayamlMutt::AccountInit.new
     @config = @generator.render(@account)
   end

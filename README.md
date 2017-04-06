@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/mayaml-mutt.svg)](http://badge.fury.io/rb/mayaml-mutt)
 [![Code Climate](https://codeclimate.com/github/skopciewski/mayaml-mutt/badges/gpa.svg)](https://codeclimate.com/github/skopciewski/mayaml-mutt)
+[![Dependency Status](https://gemnasium.com/badges/github.com/skopciewski/mayaml-mutt.svg)](https://gemnasium.com/github.com/skopciewski/mayaml-mutt)
 
 This is the mutt configs generator which gets the accounts settigns from yaml file. See [Mayaml][mayaml_url]
 The mutt configuration is designed to handle many accounts and one inbox. (example implementation: [DockerMutt][docker_mutt_url])

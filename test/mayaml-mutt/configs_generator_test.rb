@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "test_helper"
 require "mayaml-mutt/configs_generator"
 require "mayaml-mutt/account_init"
@@ -20,13 +21,14 @@ class MayamlMuttConfigsGenerator < Minitest::Test
     account.name = name
     account.realname = "Joe"
     account.type = type
-    account.server = "test@test.com"
+    account.server = "test.test.com"
     account.port = 999
     account.user = "user"
     account.pass = "pass"
-    account.smtp_protocol = "smpts"
+    account.smtp_protocol = "smtps"
     account.smtp_port = 444
     account.smtp_authenticator = "local"
+    account.smtp_server = "test.test.org"
     account
   end
 
@@ -39,13 +41,13 @@ class MayamlMuttConfigsGenerator < Minitest::Test
   def test_that_init_generator_returns_hash_with_right_key
     accounts = [account("acc1")]
     results = @generator.generates_init(accounts)
-    assert_equal true, results.key?(accounts.first.name.to_sym)
+    assert results.key?(accounts.first.name.to_sym)
   end
 
   def test_that_init_generator_returns_hash_with_alternates_key
     accounts = [account("acc1")]
     results = @generator.generates_init(accounts)
-    assert_equal true, results.key?(:alternates)
+    assert results.key?(:alternates)
   end
 
   def test_that_init_generator_returns_right_alternates_key
@@ -69,13 +71,13 @@ class MayamlMuttConfigsGenerator < Minitest::Test
   def test_that_creds_generator_returns_hash_with_right_key
     accounts = [account("acc1")]
     results = @generator.generates_creds(accounts)
-    assert_equal true, results.key?(accounts.first.name.to_sym)
+    assert results.key?(accounts.first.name.to_sym)
   end
 
   def test_that_creds_generator_returns_hash_with_default_key
     accounts = [account("acc1")]
     results = @generator.generates_creds(accounts)
-    assert_equal true, results.key?(:default)
+    assert results.key?(:default)
   end
 
   def test_that_creds_gernerator_generates_three_configs_for_two_accounts
