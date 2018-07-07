@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright (C) 2016, 2017 Szymon Kopciewski
+# Copyright (C) 2016, 2017, 2018 Szymon Kopciewski
 #
 # This file is part of MayamlMutt.
 #
@@ -32,7 +32,7 @@ module MayamlMutt
     private
 
     def template_file_path
-      File.join(Gem.datadir("mayaml-mutt"), "accounts_alternates.mustache")
+      File.join(Gem.latest_spec_for("mayaml-mutt").datadir, "accounts_alternates.mustache")
     end
   end
 end

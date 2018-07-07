@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "test_helper"
 require "mayaml-mutt/accounts_alternates"
 require "mayaml/mail_account"
@@ -9,7 +10,7 @@ class MayamlMuttAccountsAlternatesTest < Minitest::Test
   end
 
   def test_that_template_has_right_alternates
-    accounts = %w(acc1 acc2)
+    accounts = %w[acc1 acc2]
     config = @generator.render(accounts)
     assert_match(/^alternates #{accounts.join(' ')}/, config)
   end

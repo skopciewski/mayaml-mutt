@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "test_helper"
 require "mayaml-mutt/configs_generator"
 require "mayaml-mutt/account_init"
