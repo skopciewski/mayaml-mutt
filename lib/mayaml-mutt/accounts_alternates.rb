@@ -32,7 +32,7 @@ module MayamlMutt
     private
 
     def template_file_path
-      File.join(Gem.datadir("mayaml-mutt"), "accounts_alternates.mustache")
+      File.join(Gem.latest_spec_for("mayaml-mutt").datadir, "accounts_alternates.mustache")
     end
   end
 end

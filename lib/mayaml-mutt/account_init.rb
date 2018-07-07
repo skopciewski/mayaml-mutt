@@ -33,7 +33,7 @@ module MayamlMutt
     private
 
     def template_file_path
-      File.join(Gem.datadir("mayaml-mutt"), "account_init.mustache")
+      File.join(Gem.latest_spec_for("mayaml-mutt").datadir, "account_init.mustache")
     end
 
     def clean_name(string)
