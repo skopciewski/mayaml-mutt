@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "test_helper"
 require "mayaml-mutt/account_creds"
 require "mayaml/mail_account"
@@ -12,7 +13,7 @@ class MayamlMuttAccountCredsTest < Minitest::Test
     @account.port = 999
     @account.user = "user"
     @account.pass = "pass"
-    @account.mailboxes = %w(a b)
+    @account.mailboxes = %w[a b]
     @account.smtp_protocol = "smpts"
     @account.smtp_port = 444
     @account.smtp_authenticator = "login"
