@@ -1,3 +1,7 @@
+### 4.0.3 (2018.12.08)
+
+* move templates to the lib
+
 ### 4.0.2 (2018.07.07)
 
 * update code to ruby 2.5
