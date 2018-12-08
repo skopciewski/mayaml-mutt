@@ -32,7 +32,8 @@ module MayamlMutt
     private
 
     def template_file_path
-      File.join(Gem.latest_spec_for("mayaml-mutt").datadir, "accounts_alternates.mustache")
+      templates_dir = File.expand_path("../templates", __dir__)
+      File.join(templates_dir, "accounts_alternates.mustache")
     end
   end
 end
