@@ -1,3 +1,7 @@
+### 4.1.0 (2022.06.17)
+
+* update aliases format
+
 ### 4.0.3 (2018.12.08)
 
 * move templates to the lib
