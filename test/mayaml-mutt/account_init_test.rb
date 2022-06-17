@@ -19,7 +19,7 @@ class MayamlMuttAccountInitTest < Minitest::Test
     @account.smtp_authenticator = "login"
     @account.smtp_server = "test.test.org"
     @generator = ::MayamlMutt::AccountInit.new
-    @config = @generator.render(@account)
+    @config = @generator.render(@account, 1)
   end
 
   def test_that_template_has_send_hook_line
@@ -31,6 +31,6 @@ class MayamlMuttAccountInitTest < Minitest::Test
   end
 
   def test_that_template_has_alias_line
-    assert_match(/^alias my_account_#{@account.name.gsub(/\W/, '_')} #{@account.name}/, @config)
+    assert_match(/^alias my_account_1_#{@account.name.gsub(/\W/, '_')} #{@account.name}/, @config)
   end
 end

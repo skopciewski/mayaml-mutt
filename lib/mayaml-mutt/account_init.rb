@@ -21,11 +21,11 @@ require "mustache"
 
 module MayamlMutt
   class AccountInit
-    def render(mail_account, config = {})
+    def render(mail_account, index, config = {})
       ::Mustache.render(
         IO.read(template_file_path),
         name: mail_account.name,
-        clean_name: clean_name(mail_account.name),
+        clean_name: clean_name(mail_account.name, index),
         accounts_dir: config.fetch(:accounts_dir, "~/.mutt/accounts")
       )
     end
@@ -37,8 +37,8 @@ module MayamlMutt
       File.join(templates_dir, "account_init.mustache")
     end
 
-    def clean_name(string)
-      string.gsub(/\W/, "_")
+    def clean_name(string, index)
+      "#{index}_#{string.gsub(/\W/, "_")}"
     end
   end
 end
