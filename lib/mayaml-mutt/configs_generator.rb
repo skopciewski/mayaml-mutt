@@ -27,10 +27,10 @@ module MayamlMutt
 
     def generates_init(accounts)
       alternates = []
-      accounts.each_with_object({}) do |mail_account, result|
+      accounts.each_with_object({}).with_index do |(mail_account, result), index|
         key = mail_account.name.to_sym
         alternates << mail_account.name
-        result[key] = @init_templater.render(mail_account)
+        result[key] = @init_templater.render(mail_account, index)
         result[:alternates] = @alternates_templater.render(alternates)
         result
       end
